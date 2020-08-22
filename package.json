@@ -1,0 +1,30 @@
+{
+  "name": "connect-api",
+  "version": "0.0.1",
+  "description": "The Connect API by Ameelio.org",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.4",
+    "sequelize": "^6.3.4",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ameelio/connect-api.git"
+  },
+  "author": "Jesse Horne <j.horne2796@gmail.com> (https://ameelio.org)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ameelio/connect-api/issues"
+  },
+  "homepage": "https://github.com/Ameelio/connect-api#readme"
+}
