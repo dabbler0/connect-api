@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 require('./helpers');
+require('./middleware');
 
 const express = require('express');
 var bodyParser = require('body-parser');

@@ -14,11 +14,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Session.init({
+    id: {
+      primaryKey: true,
+      autoIncrement: true,
+      type: DataTypes.INTEGER
+    },
     token: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
-      autoIncrement: false
+      primaryKey: false,
     },
     user_id: {
       type: DataTypes.INTEGER
