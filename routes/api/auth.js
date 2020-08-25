@@ -20,6 +20,8 @@ var router = require('express').Router();
 // POST /api/auth/login
 // Login with email+password
 // Returns the User resource from the Letters API
+// @param email
+// @param password
 router.post('/login', async function(req, res, next) {
   var data = req.body;
 
@@ -36,8 +38,17 @@ router.post('/login', async function(req, res, next) {
 // POST /api/auth/login/remember
 // Login with remember_token
 // Returns the User resource from the Letters API
-router.post('/login/remember', function(req, res, next) {
-  res.send('TESTING /cat');
+// @param remember
+router.post('/login/remember', async function(req, res, next) {
+  var data = req.body;
+
+  var call = await letters.login_with_remember(data.remember);
+
+  if (!call.ok) {
+    return api_response(res, 400, call.data, {});
+  }
+
+  return api_response(res, 200, "", call.data.data);
 });
 
 module.exports = router;
