@@ -1,4 +1,5 @@
 var router = require('express').Router();
+var joi = require('joi');
 
 // Authentication with the Connect API is the same on the outside
 // to authentication with the Letters API because we actually use
@@ -25,6 +26,20 @@ var router = require('express').Router();
 router.post('/login', async function(req, res, next) {
   var data = req.body;
 
+  // VALIDATION
+  try {
+    var {valid, errors} = await validate(res, req, {
+      "email": joi.string().email(),
+      "password": joi.string().alphanum().min(8)
+    }).catch(function() {});
+
+    if (!valid) {
+      return api_response(res, 400, "", errors);
+    }
+  } catch (error) {
+    // pass
+  }
+
   var call = await letters.login(data.email, data.password);
 
   if (!call.ok) {
@@ -41,6 +56,19 @@ router.post('/login', async function(req, res, next) {
 // @param remember
 router.post('/login/remember', async function(req, res, next) {
   var data = req.body;
+
+  // VALIDATION
+  try {
+    var {valid, errors} = await validate(res, req, {
+      "remember": joi.string().min(100).max(100)
+    }).catch(function() {});
+
+    if (!valid) {
+      return api_response(res, 400, "", errors);
+    }
+  } catch (error) {
+    // pass
+  }
 
   var call = await letters.login_with_remember(data.remember);
 

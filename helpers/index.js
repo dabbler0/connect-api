@@ -1,4 +1,5 @@
-require('./letters_api')
+require('./letters_api');
+require('./validation');
 
 // Standard method for sending all responses from the API to the client
 function api_response(res, status, message, data) {
